@@ -4,7 +4,9 @@
   "description": "authentication service",
   "main": "index.js",
   "scripts": {
-    "test": "mocha",
+    "test:integration": "mocha test/integration/*.js ",
+    "test:unit": "mocha test/unit/**/*.js",
+    "test": "npm run test:unit && npm run test:integration",
     "lint": "eslint ."
   },
   "author": "heinrich10",
