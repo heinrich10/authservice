@@ -56,7 +56,7 @@ class UsersController {
 			updatedAt: new Date(),
 		});
 
-		res.status = 201;
+		res.status(201);
 		res.json({
 			success: true,
 		});

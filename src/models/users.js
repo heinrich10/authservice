@@ -1,8 +1,10 @@
 
+const registry = require('../lib/registry');
+
 class Users {
 
 	constructor() {
-		this.users = [];
+		this.users = registry.db.users;
 	}
 
 	get(username) {

@@ -1,7 +1,7 @@
 
 const { promisify } = require('util');
 const jwt = require('jsonwebtoken');
-const registry = require('./registry');
+const registry = require('../lib/registry');
 
 const createToken = promisify((payload, expiry, cb) => {
 	payload.exp = expiry;
