@@ -18,7 +18,7 @@
 
 # API
 
-**/register**
+**POST /register**
 
 request body
 ```
@@ -36,7 +36,7 @@ response body
 }
 ```
 
-**/login**
+**POST /login**
 
 request body
 ```
@@ -54,7 +54,7 @@ sample response
 
 # Notes
 
-- To make it simple, I did not add configuration files. If I need to add it, I would probably user `dotenv`.
+- To make it simple, I did not add configuration files. If I need to add it, I would probably use `dotenv`.
 - This uses `registry pattern` to inject the db.
 - I used rsa256 auth type for jwt, where there is a private key to sign the issued token and a public key to verify its signature.
 - I know it is not a good practice to upload the key files to the repo but this is the easiest way as of the moment.
