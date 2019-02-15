@@ -12,6 +12,6 @@ WORKDIR /usr/src/app
 COPY . .
 RUN npm install --production
 
-EXPOSE 3001
+EXPOSE 6010
 
 CMD ["node", "index.js"]
