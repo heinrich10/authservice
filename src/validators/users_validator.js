@@ -15,8 +15,7 @@ exports.register = (req, res, next) => {
 	}
 
 	if (error.length > 0) {
-		throw new ErrorObject(error, 400);
+		return next(new ErrorObject(error, 400));
 	}
-
 	next();
 };
