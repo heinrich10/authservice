@@ -35,7 +35,7 @@ describe('testing usersValidator', () => {
 			expect(err.message[0]).to.be.equal('username is missing');
 			done();
 		});
-  });
+	});
 	it('should return an error when password field is missing', (done) => {
 		const body = {
 			username: 'user1',
