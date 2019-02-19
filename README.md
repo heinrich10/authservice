@@ -2,13 +2,19 @@
 
 # How to run
 
+## REST API
 1. execute `npm install` to install dependencies
 2. execute `node index` to run the server, it will listen on port 6010
+
+## gRPC API
+1. execute `npm install` to install dependencies
+2. execute `INTERFACE=grpc node index` to run the server, it will listen to port 6010
 
 # How to run in docker
 
 1. build the project using `docker build -t authservice:latest .`
 2. once build is successful, execute `docker run -it -p 6010:6010 -d authservice:latest`
+3. to use the gRPC interface, add the line `ENV INTERFACE grpc` to the Dockerfile or use `docker run -it -e INTERFACE=grpc -p 6010:6010 -d authservice:latest`
 
 # Running the test
 
@@ -51,6 +57,51 @@ sample response
     "success": true
 }
 ```
+
+**gRPC .register**
+
+params
+```
+{
+    "username": "user1",
+    "password": "password"
+}
+```
+
+response
+```
+{
+    "status": 201,
+    "message": "success"
+}
+```
+
+**gRPC .login**
+
+params
+```
+{
+    "username": "user1",
+    "password": "password"
+}
+```
+
+response
+```
+{
+    "status": 200,
+    "token": "kajlkjfldajfb",
+    "refreshToken": "apjapvjp"
+}
+```
+
+# Config
+
+There are 2 settings that can be configured by supplying ENV vars:
+- PORT: port where the app listens to (default: 6010). note: you have to change the `EXPOSE` on the Dockerfile.
+- INTERFACE: rest or grpc (default: rest)
+
+example: executing `PORT=3001 INTERFACE=grpc node index` will make the app listen to port 3001 and use the grpc interface
 
 # Notes
 
