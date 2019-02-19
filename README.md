@@ -2,7 +2,7 @@
 
 # How to run
 
-## REST API
+## HTTP API
 1. execute `npm install` to install dependencies
 2. execute `node index` to run the server, it will listen on port 6010
 
