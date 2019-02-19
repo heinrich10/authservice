@@ -9,13 +9,12 @@ const { case1 } = require('./fixtures/users.js');
 
 describe('Login Test', () => {
 	let thisApp;
-	let db;
 	const body = {
 		username: 'user1',
 		password: 'password',
 	};
 	before(async () => {
-		db = new DB();
+		const db = new DB();
 		db.users[case1.username] = case1;
 		registry.db = db;
 		registry.privKey = await loadCerts();

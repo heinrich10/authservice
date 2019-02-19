@@ -4,6 +4,7 @@ const usersService = require('../services/users_service');
 
 const INVALID_PASSWORD = 'username or password incorrect';
 const DUPLICATE = 'Unprocessable Entity';
+const MISSING_FIELDS = 'missing username of password';
 
 let self;
 
@@ -33,7 +34,9 @@ class UsersGcontroller {
 
 	async register (call, cb) {
 		const { username, password } = call.request;
-
+		if (!username || !password) {
+			return cb({ status: 400, message: MISSING_FIELDS });
+		}
 		const existingUser = await self.users.get(username);
 
 		if (existingUser) {

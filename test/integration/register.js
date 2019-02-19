@@ -5,10 +5,10 @@ const app = require('../../src/app');
 const registry = require('../../src/lib/registry');
 const DB = require('../../src/lib/db');
 
-describe('Login Test', () => {
+describe('Register Test', () => {
 	describe('Successfully create a user', () => {
-		let thisApp;
 		let db;
+		let thisApp;
 		before(() => {
 			db = new DB();
 			registry.db = db;
@@ -33,8 +33,8 @@ describe('Login Test', () => {
 		});
 	});
 	describe('Don\'t allow duplicate users', () => {
-		let thisApp;
 		let db;
+		let thisApp;
 		const body = {
 			username: 'user2',
 			password: 'password',
