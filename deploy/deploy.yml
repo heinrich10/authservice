@@ -1,0 +1,49 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: authservice-deployment
+  labels:
+    app: authservice
+spec:
+  replicas: 3
+  strategy:
+    type: RollingUpdate
+  selector:
+    matchLabels:
+      app: authservice
+  template:
+    metadata:
+      labels:
+        app: authservice
+    spec:
+      containers:
+      - name: authservice
+        image: heinrich10/authservice:latest
+        ports:
+        - name: auth-port
+          containerPort: 6010
+        readinessProbe:
+          httpGet:
+            path: /check
+            port: auth-port
+          initialDelaySeconds: 30
+          periodSeconds: 3
+---
+kind: Service
+apiVersion: v1
+metadata:
+  name: authservice-svc
+  annotations:
+    getambassador.io/config: |
+      ---
+      apiVersion: ambassador/v1
+      kind: Mapping
+      name: authservice-route
+      prefix: /auth/
+      service: authservice-svc:6010
+spec:
+  selector:
+    app: authservice
+  ports:
+  - protocol: TCP
+    port: 6010
