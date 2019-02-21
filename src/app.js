@@ -23,6 +23,7 @@ module.exports = () => {
 	const usersController = new UsersController(users);
 
 	app.use(responseTime());
+	app.get('/check', (req, res) => { res.json({ status: true });});
 	app.post('/login', express.json(), usersValidator.register, wrap(usersController.login));
 	app.post('/register', express.json(), usersValidator.register, wrap(usersController.register));
 	app.use(errorHandler());
