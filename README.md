@@ -24,6 +24,15 @@
 
 # API
 
+**GET /check**
+
+response
+```
+{
+    status: true
+}
+```
+
 **POST /register**
 
 request body
@@ -102,6 +111,16 @@ There are 2 settings that can be configured by supplying ENV vars:
 - INTERFACE: rest or grpc (default: rest)
 
 example: executing `PORT=3001 INTERFACE=grpc node index` will make the app listen to port 3001 and use the grpc interface
+
+# Deployment
+
+Prerequisites:
+- kubernetes cluster
+- a running ambassador instance
+
+execute `kubectl apply -f ./deploy/deploy.yml`. you should be able to access the api endpoints with `http://${AMBASSADOR_IP}/auth/`
+
+example: GET http://localhost/auth/check would let you check if server is running.
 
 # Notes
 
