@@ -1,3 +1,5 @@
+Archived... please refer to the new repo [auth-service](https://github.com/heinrich10/auth-service)
+
 # authservice
 
 # How to run
